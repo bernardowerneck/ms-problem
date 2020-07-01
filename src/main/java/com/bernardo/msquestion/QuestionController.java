@@ -1,5 +1,8 @@
 package com.bernardo.msquestion;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,15 +37,15 @@ public class QuestionController
 //		options.add("AAAAAAA");
 //		options.add("testeteste");
 //
-//		contents.add(new TextContent("Uaba lubba dub dub?"));
-//		contents.add(new ChoicesContent(options));
+//		contents.add(new TextContent(0, "Uaba lubba dub dub?"));
+//		contents.add(new ChoicesContent((String []) options.toArray(), 1));
 //		
-//		Question question = new Question(Subjects.MATEMATICA, topics, "felipeferreira123", keywords, contents);
+//		Problem question = new Problem(Subject.MATEMATICA, topics, "felipeferreira123", keywords, contents);
 //		
 //		return question;
 		
 //		return null;
-//		
+		
 //	}
 	
 	@RequestMapping(value="/question", method = RequestMethod.POST, consumes = "application/json")
@@ -62,16 +65,19 @@ public class QuestionController
 		return "oioioi";
 	}
 	
-//	@RequestMapping("/question-list")
-//	@CrossOrigin
-//	public List<Question> questionListSupplier()
-//	{
-//		List<Question> questionList = new ArrayList<Question>();
-//		
-//		questionList.add(questionSupplier());
-//		questionList.add(questionSupplier());
-//		
-//		return questionList;
-//	}
+	@RequestMapping("/question-list")
+	@CrossOrigin
+	public List<MockQuestion> questionListSupplier()
+	{
+		List<MockQuestion> questionList = new ArrayList<MockQuestion>();
+		
+		questionList.add(new MockQuestion("oioioi", "oi", 0));
+		questionList.add(new MockQuestion("schrubles", "fribbles", 1));
+		questionList.add(new MockQuestion("bom dia", "boa noite", 2));
+		questionList.add(new MockQuestion("uala", "alau", 3));
+		questionList.add(new MockQuestion("aaaaaa", "bbbbbb", 4));
+		
+		return questionList;
+	}
 	
 }
